@@ -8,6 +8,10 @@ Clone the repository:
 
 `git clone https://github.com/rpflorence/accessibility-demos.git`
 
+Install dependencies, you will need [Node.js](http://nodejs.org).
+
+`npm install`
+
 Create a file in `demos/` that looks like this:
 
 ```html
