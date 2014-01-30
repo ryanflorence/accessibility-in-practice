@@ -2,12 +2,12 @@
 const fs = require('fs')
 const path = require('path')
 const hbs = require('handlebars')
-const cheerio = require('cheerio');
+const cheerio = require('cheerio')
 
-(function main() {
+!function main() {
   return process.stdout.write(
     template()(
-      templateLocals()))})()
+      templateLocals()))}()
 
 function defaultFilesPath() {
   return 'demos'}
@@ -19,20 +19,19 @@ function filesPath() {
 function filePath(file) {
   return ''+filesPath()+'/'+file}
 
-function readFile(file) {
+function makeFileObject(fileName) {
   return {
-    id: file.replace(/\.html$/, ''),
+    id: fileName.replace(/\.html$/, ''),
     content: fs.readFileSync(
-      filePath(file)).toString()
-    }}
+      filePath(fileName)).toString() }}
 
 function files() {
   return fs.readdirSync(
     filesPath())}
 
-function processFile(file) {
+function processFile(fileName) {
   return parseFile(
-    readFile(file))}
+    makeFileObject(fileName))}
 
 function templatePath() {
   return path.join(__dirname, 'template.hbs')}
@@ -56,15 +55,14 @@ function parseFile(fileObject) {
       correct: {
         description: $('correct description').html(),
         demo: $('correct demo').html().trim(),
-      },
-    }})(cheerio.load(fileObject.content))}
+      }, }})(cheerio.load(fileObject.content))}
 
-function css() {
+function readCss() {
   return fs.readFileSync(
     path.resolve(__dirname, 'styles.css')).toString()}
 
 function templateLocals() {
   return {
     files: files().sort().map(processFile),
-    css: css() }}
+    css: readCss()}}
 
