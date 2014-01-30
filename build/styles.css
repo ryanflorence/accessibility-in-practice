@@ -1,0 +1,61 @@
+.blue      { color: #2267f2 }
+.lightblue { color: #1bddf2 }
+.green     { color: #3fbf04 }
+.orange    { color: #f28705 }
+.red       { color: #f24738 }
+
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  font-color: #444;
+  line-height: 1.5;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  padding: 40px;
+}
+
+#toc {
+  list-style: none;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+article {
+  border-bottom: 1px solid #212121;
+  padding: 40px;
+  padding-left: 0;
+  margin-left: 40px;
+}
+
+article:last-child {
+  border-bottom: none;
+}
+
+pre {
+  border: 1px solid #ddd;
+  padding: 1em;
+  background: #fafaff;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+body, h1, h2, h3 {
+  font-weight: 200;
+}
+
+.header-link {
+  text-decoration: none;
+}
+
+/*.demo {*/
+  /*border-left: 1px solid;*/
+  /*border-color: #ccc;*/
+  /*padding: 10px;*/
+  /*padding-left: 9px;*/
+/*}*/
+

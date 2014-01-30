@@ -1,0 +1,44 @@
+<!doctype html>
+<title>Accessibility Antipatterns</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+{{{css}}}
+</style>
+
+<header>
+  <h1>Accessibility Antipatterns</h1>
+
+  <nav role="nav">
+    <ol id="toc">
+      {{#each files}}
+        <li>
+          <a
+            href="#{{id}}"
+            title="{{textIntroduction}}"
+            class="blue"
+          >{{name}}</a></li>
+      {{/each}}
+    </ol>
+  </nav>
+</header>
+
+<main role="main">
+  {{#each files}}
+    <article id="{{id}}">
+      <h2><a class="blue header-link" href="#{{id}}">{{name}}</a></h2>
+      {{{introduction}}}
+
+      <h3 class="red">Incorrect</h3>
+      <pre>{{incorrect.demo}}</pre>
+      <div>{{{incorrect.demo}}}</div>
+      <div>{{{incorrect.description}}}</div>
+
+      <h3 class="green">Correct</h3>
+      <pre>{{correct.demo}}</pre>
+      <div>{{{correct.demo}}}</div>
+      <div>{{{correct.description}}}</div>
+    </article>
+  {{/each}}
+</main>
+

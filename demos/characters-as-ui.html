@@ -1,0 +1,36 @@
+<title>Characters as UI</title>
+
+<intro>
+  <p>
+    Sometimes we like to use characters, like "x" or the often better
+    looking multiplication character, ×. These are confusing to screen
+    reader users.
+  </p>
+</intro>
+
+<incorrect>
+  <demo>
+    <button>×</button>
+  </demo>
+
+  <description>
+    <p>
+      This is read as <i>"times button"</i> in a screen reader. Are we
+      doing math?
+    </p>
+  </description>
+</incorrect>
+
+<correct>
+  <demo>
+    <button aria-label="close download chrome popup">×</button>
+  </demo>
+
+  <description>
+    <p>
+      This is read as <i>"close download chrome popup button"</i>. The button is not
+      always read in the same context as it is visually displayed, so use a
+      descriptive, but brief, label.
+    </p>
+  </description>
+</section>

@@ -1,0 +1,34 @@
+<title>Alt Attribute Redundancy</title>
+
+<intro>
+  <p>
+    Adding alt attributes is important, but saying "image of a [fill in the
+    blank]" is redundant.
+  </p>
+</intro>
+
+<incorrect>
+  <demo>
+    <img alt="image of a cat" src="http://placekitten.com/50/50" height="50">
+  </demo>
+  <description>
+    <p>
+      This is read as <i>"image image of a cat"</i> in a screen reader.
+    </p>
+  </description>
+</incorrect>
+
+<correct>
+  <demo>
+    <img alt="cat" src="http://placekitten.com/50/50" height="50">
+  </demo>
+  <description>
+    <p>
+      This is read as <i>"image cat"</i>. The screen reader already knows its
+      an image, and says so by default. Screen reader users tend not to care
+      about the "of a" because its already implied; keep what is read as brief
+      as possible.
+    </p>
+  </description>
+</correct>
+
