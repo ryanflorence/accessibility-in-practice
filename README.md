@@ -1,18 +1,18 @@
-Accessibility Antipatterns
-==========================
+Accessibility in Practice
+=========================
 
 Contributing
 ------------
 
 Clone the repository:
 
-`git clone https://github.com/rpflorence/accessibility-demos.git`
+`git clone https://github.com/rpflorence/accessibility-in-practice.git`
 
 Install dependencies, you will need [Node.js](http://nodejs.org).
 
 `npm install`
 
-Create a file in `demos/` that looks like this:
+Create a file in `data/` that looks like this:
 
 ```html
 <title>Title of your pattern</title>

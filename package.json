@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build/build.js > index.html"
+    "build": "node app/build.js > index.html"
   },
   "author": "Ryan Florence",
   "license": "MIT",
