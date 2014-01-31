@@ -26,29 +26,46 @@
 <main role="main">
   {{#each files}}
     <article id="{{id}}">
-      <h2><a class="blue header-link" href="#{{id}}">{{name}}</a></h2>
+      <h2 class="demo-header"><a class="blue header-link" href="#{{id}}">{{name}}</a></h2>
       <div class="introduction">{{{introduction}}}</div>
 
-      <h3 class="red">Incorrect</h3>
-      {{#each incorrect}}
-        <pre>{{code}}</pre>
-        <div class="demo">{{{code}}}</div>
-        <h4>Discussion</h4>
-        <div>{{{discussion}}}</div>
-      {{/each}}
+      <div class="demos incorrect-demos">
+        {{#each incorrect}}
+          <h3 id="{{id}}"><a class="red header-link" href="#{{id}}">Incorrect</a></h3>
+          <div class="demo">
+            <div>{{{code}}}</div>
+            <pre class="code">{{code}}</pre>
+            <h4 class="purple">Discussion</h4>
+            <div>{{{discussion}}}</div>
+          </div>
+        {{/each}}
+      </div>
 
-      <h3 class="green">Correct</h3>
-      {{#each correct}}
-        <pre>{{code}}</pre>
-        <div class="demo">{{{code}}}</div>
-        <h4>Discussion</h4>
-        <div>{{{discussion}}}</div>
-      {{/each}}
+      <div class="demos correct-demos">
+        {{#each correct}}
+          <h3 id="{{id}}"><a class="green header-link" href="#{{id}}">Correct</a></h3>
+          <div class="demo">
+            <div>{{{code}}}</div>
+            <pre class="code">{{code}}</pre>
+            <h4 class="purple">Discussion</h4>
+            <div>{{{discussion}}}</div>
+          </div>
+        {{/each}}
+      </div>
 
       {{#if resources}}
-        <h3>Resources</h3>
-        {{{resources}}}
+        <h3 id="{{id}}-resources">
+          <a href="#{{id}}-resources" class="header-link orange">Additional Resources</a>
+        </h3>
+        <ul>
+        {{#each resources}}
+          <li>
+            <a href="{{href}}">{{title}}</a> - {{description}}
+          </li>
+        {{/each}}
+        </ul>
       {{/if}}
+
     </article>
   {{/each}}
 </main>

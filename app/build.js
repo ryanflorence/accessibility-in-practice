@@ -47,18 +47,40 @@ function templateFileObject(id, $) {
       name: $('title').html(),
       id: id,
       introduction: $('introduction').html(),
+      resources: getResources($),
       textIntroduction: $('introduction').text().trim().replace(/\s+/g, ' '),
-      incorrect: getDemos($, 'incorrect'),
-      correct: getDemos($, 'correct')}}
+      incorrect: getDemos($, 'incorrect', id),
+      correct: getDemos($, 'correct', id)}}
 
-function getDemos($, kind) {
+function getResources($) {
+  return $('resources resource').map(function(i, resource) {
+    return (function(el) {
+      return {
+        href: el.attr('href'),
+        title: el.attr('title'),
+        description: el.html() }})($(resource))}).toArray()}
+
+function getDemos($, kind, id) {
   return $(kind).find('demo').map(function(i, el) {
     return {
+      id: id+'-'+kind+'-'+(i+1),
       code: cleanWhitespace($(el).find('code').html()),
       discussion: $(el).find('discussion').html()}}).toArray()}
 
+function getInitialIndent(html, fn) {
+  return html.match(/[^\s]/).index}
+
 function cleanWhitespace(html) {
-  return html}
+  return trimLeadingWhitespace(html, getInitialIndent(html))}
+
+function trimLeadingWhitespace(string, indent) {
+  return trimEmptyFirstLines(string.split('\n')).map(function(line) {
+    return line.substring(indent - 1)}).join('\n')}
+
+function trimEmptyFirstLines(lines) {
+  var foundNonEmptyLine = false; // nooooooo but how do I get rid of this var?
+  return lines.filter(function(line) {
+    return foundNonEmptyLine || (foundNonEmptyLine = line.trim() !== '')})}
 
 function readCss() {
   return fs.readFileSync(

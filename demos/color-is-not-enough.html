@@ -3,12 +3,14 @@
 <introduction>
   <p>
     We often use only color to communicate information. This can make
-    your app confusing for screen reader and color blind users.
-    Additionally, colors in your culture may not have the same meaning
+    our apps confusing for screen reader and color blind users.
+    Additionally, colors in one culture may not have the same meaning
     as they do in another culture.
   </p>
+  <p>
+    The solution is to add another indication besides just color.
+  </p>
   <style>
-    #color-is-not-enough .demo { font-size: 24px; }
     #color-is-not-enough .status,
     #color-is-not-enough .status2 { display: inline-block; width: 24px; height: 24px; }
   </style>
@@ -27,8 +29,9 @@
     <discussion>
       <ul>
         <li>
-          For many forms of color blindness, these two colors are nearly
-          identical.
+          For most forms of color blindness, these two colors are
+          <span style="background-color: rgb(173, 172, 121);">nearly</span>
+          <span style="background-color: rgb(178, 177, 105);">identical</span>
         </li>
         <li>
           Screenreaders don't see any of the online/offline status
@@ -53,18 +56,20 @@
       </style>
     </code>
     <discussion>
-      <p>This is the simplest solution, simply add some text.</p>
+      <p>
+        This is the simplest solution, simply add some text. Screen
+        readers will read it, color blind users can read it, and you
+        don't rely solely on cultural meanings of colors.
+      </p>
     </discussion>
   </demo>
 
   <demo>
     <code>
-      <!-- for a more minimalistic design -->
-      <div><span class="status2 online"><span class="sr-only">online</span></span> Server A</div>
-      <div><span class="status2 offline"><span class="sr-only">offline</span></span> Server B</div>
+      <div><span class="status2 online"></span> Server A <span class="sr-only">online</span></div>
+      <div><span class="status2 offline"></span> Server B <span class="sr-only">offline</span></div>
       <style>
         .sr-only { 
-          /* seriously hacky but it works */
           position: absolute;
           clip: rect(1px,1px,1px,1px);
           width: 1px;
@@ -92,12 +97,51 @@
     </code>
     <discussion>
       <p>
-        This is a more minimalistic design.
+        You may not want the extra text from the previous solution, so
+        we can use icons and hidden text.
+      </p>
+      <ul>
+        <li>
+          Color blind users can distinguish the difference between
+          online and offline with the sun and cloud icons.
+        </li>
+        <li>
+          The sun and cloud have universal meaning that any culture
+          can easily associate with online and offline (you
+          can come up with something more creative, I'm sure).
+        </li>
+        <li>
+          Some screen readers will read <code>:before</code>
+          pseudo-element contents (some will read the sun as "clear
+          weather emoji"), but some don't, so you shouldn't rely on it.
+        </li>
+        <li>
+          The <code>.sr-only</code> class hides content from sighted
+          users but is read by screen readers.
+        </li>
       </p>
     </discussion>
   </demo>
 </correct>
 
 <resources>
+  <resource href="http://colororacle.org/" title="Color Oracle">
+    Software for all platforms to preview your desktop the way people
+    with different color deficiencies will see it.
+  </resource>
+  <resource
+    href="http://www.color-blindness.com/2006/04/28/colorblind-population/"
+    title="Colorblind Population"
+  >
+    Shows statistics indicating that roughly 8% of males have color
+    blindness.
+  </resource>
+
+  <resource
+    href="http://en.wikipedia.org/wiki/Color_blindness"
+    title="Color Blindness"
+  >
+    Wikipedia article on color blindness with interesting images.
+  </resource>
 </resources>
 
