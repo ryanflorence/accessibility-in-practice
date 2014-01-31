@@ -9,14 +9,19 @@
 
 <header>
   <h1>Accessibility in Practice</h1>
+  <p>
+    This is a community project authored by web developers who care
+    deeply about making the open web accessible to everybody.
+    <a href="https://github.com/rpflorence/accessibility-in-practice">Please contribute</a>.
+  </p>
   <nav role="nav">
+    <h2>Table of Contents</h2>
     <ol id="toc">
       {{#each files}}
         <li>
           <a
             href="#{{id}}"
             title="{{textIntroduction}}"
-            class="blue"
           >{{name}}</a></li>
       {{/each}}
     </ol>

@@ -8,11 +8,9 @@
     as they do in another culture.
   </p>
   <p>
-    The solution is to add another indication besides just color.
+    The solution is to add another indication aside from color.
   </p>
   <style>
-    #color-is-not-enough .status,
-    #color-is-not-enough .status2 { display: inline-block; width: 24px; height: 24px; }
   </style>
 </introduction>
 
@@ -22,8 +20,17 @@
       <div><span class="status online"></span> Server A</div>
       <div><span class="status offline"></span> Server B</div>
       <style>
-        #color-is-not-enough .online  { background-color: rgb(144, 185, 117) }
-        #color-is-not-enough .offline { background-color: rgb(233, 151, 105) }
+        #color-is-not-enough .status {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+        }
+        #color-is-not-enough .online  {
+          background-color: rgb(144, 185, 117)
+        }
+        #color-is-not-enough .offline {
+          background-color: rgb(233, 151, 105)
+        }
       </style>
     </code>
     <discussion>
@@ -50,10 +57,6 @@
     <code>
       <div><span class="status online"></span> Server A: online</div>
       <div><span class="status offline"></span> Server B: offline</div>
-      <style>
-        #color-is-not-enough .online  { background-color: rgb(144, 185, 117) }
-        #color-is-not-enough .offline { background-color: rgb(233, 151, 105) }
-      </style>
     </code>
     <discussion>
       <p>
@@ -66,8 +69,8 @@
 
   <demo>
     <code>
-      <div><span class="status2 online"></span> Server A <span class="sr-only">online</span></div>
-      <div><span class="status2 offline"></span> Server B <span class="sr-only">offline</span></div>
+      <div><span class="status-icon online"></span> Server A <span class="sr-only">online</span></div>
+      <div><span class="status-icon offline"></span> Server B <span class="sr-only">offline</span></div>
       <style>
         .sr-only { 
           position: absolute;
@@ -76,21 +79,23 @@
           overflow: hidden;
           top: 0;
         }
-        #color-is-not-enough .status2 {
+        #color-is-not-enough .status-icon {
           position: relative;
+          display: inline-block;
+          width: 24px;
+          height: 24px;
         }
-        #color-is-not-enough .status2.online:before,
-        #color-is-not-enough .status2.offline:before { 
+        #color-is-not-enough .status-icon:before {
           position: absolute;
           left: 4px;
           color: #fff;
           opacity: 0.75;
           font-size: 16px;
         }
-        #color-is-not-enough .status2.online:before {
+        #color-is-not-enough .status-icon.online:before {
           content: '☀︎';
         }
-        #color-is-not-enough .status2.offline:before {
+        #color-is-not-enough .status-icon.offline:before {
           content: '☁︎'
         }
       </style>
