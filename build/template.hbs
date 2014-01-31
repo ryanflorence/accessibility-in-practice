@@ -1,14 +1,14 @@
 <!doctype html>
-<title>Accessibility Antipatterns</title>
+<title>Accessibility in Practice</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 {{{css}}}
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <header>
-  <h1>Accessibility Antipatterns</h1>
-
+  <h1>Accessibility in Practice</h1>
   <nav role="nav">
     <ol id="toc">
       {{#each files}}
@@ -27,18 +27,30 @@
   {{#each files}}
     <article id="{{id}}">
       <h2><a class="blue header-link" href="#{{id}}">{{name}}</a></h2>
-      {{{introduction}}}
+      <div class="introduction">{{{introduction}}}</div>
 
       <h3 class="red">Incorrect</h3>
-      <pre>{{incorrect.demo}}</pre>
-      <div>{{{incorrect.demo}}}</div>
-      <div>{{{incorrect.description}}}</div>
+      {{#each incorrect}}
+        <pre>{{code}}</pre>
+        <div class="demo">{{{code}}}</div>
+        <h4>Discussion</h4>
+        <div>{{{discussion}}}</div>
+      {{/each}}
 
       <h3 class="green">Correct</h3>
-      <pre>{{correct.demo}}</pre>
-      <div>{{{correct.demo}}}</div>
-      <div>{{{correct.description}}}</div>
+      {{#each correct}}
+        <pre>{{code}}</pre>
+        <div class="demo">{{{code}}}</div>
+        <h4>Discussion</h4>
+        <div>{{{discussion}}}</div>
+      {{/each}}
+
+      {{#if resources}}
+        <h3>Resources</h3>
+        {{{resources}}}
+      {{/if}}
     </article>
   {{/each}}
 </main>
+
 

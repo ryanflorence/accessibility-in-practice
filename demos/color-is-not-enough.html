@@ -1,0 +1,103 @@
+<title>Color Is Not Enough</title>
+
+<introduction>
+  <p>
+    We often use only color to communicate information. This can make
+    your app confusing for screen reader and color blind users.
+    Additionally, colors in your culture may not have the same meaning
+    as they do in another culture.
+  </p>
+  <style>
+    #color-is-not-enough .demo { font-size: 24px; }
+    #color-is-not-enough .status,
+    #color-is-not-enough .status2 { display: inline-block; width: 24px; height: 24px; }
+  </style>
+</introduction>
+
+<incorrect>
+  <demo>
+    <code>
+      <div><span class="status online"></span> Server A</div>
+      <div><span class="status offline"></span> Server B</div>
+      <style>
+        #color-is-not-enough .online  { background-color: rgb(144, 185, 117) }
+        #color-is-not-enough .offline { background-color: rgb(233, 151, 105) }
+      </style>
+    </code>
+    <discussion>
+      <ul>
+        <li>
+          For many forms of color blindness, these two colors are nearly
+          identical.
+        </li>
+        <li>
+          Screenreaders don't see any of the online/offline status
+          information.
+        </li>
+        <li>
+          Green might not be a positive thing in another culture.
+        </li>
+      </ul>
+    </discussion>
+  </demo>
+</incorrect>
+
+<correct>
+  <demo>
+    <code>
+      <div><span class="status online"></span> Server A: online</div>
+      <div><span class="status offline"></span> Server B: offline</div>
+      <style>
+        #color-is-not-enough .online  { background-color: rgb(144, 185, 117) }
+        #color-is-not-enough .offline { background-color: rgb(233, 151, 105) }
+      </style>
+    </code>
+    <discussion>
+      <p>This is the simplest solution, simply add some text.</p>
+    </discussion>
+  </demo>
+
+  <demo>
+    <code>
+      <!-- for a more minimalistic design -->
+      <div><span class="status2 online"><span class="sr-only">online</span></span> Server A</div>
+      <div><span class="status2 offline"><span class="sr-only">offline</span></span> Server B</div>
+      <style>
+        .sr-only { 
+          /* seriously hacky but it works */
+          position: absolute;
+          clip: rect(1px,1px,1px,1px);
+          width: 1px;
+          overflow: hidden;
+          top: 0;
+        }
+        #color-is-not-enough .status2 {
+          position: relative;
+        }
+        #color-is-not-enough .status2.online:before,
+        #color-is-not-enough .status2.offline:before { 
+          position: absolute;
+          left: 4px;
+          color: #fff;
+          opacity: 0.75;
+          font-size: 16px;
+        }
+        #color-is-not-enough .status2.online:before {
+          content: '☀︎';
+        }
+        #color-is-not-enough .status2.offline:before {
+          content: '☁︎'
+        }
+      </style>
+    </code>
+    <discussion>
+      <p>
+        This is a more minimalistic design.
+      </p>
+    </discussion>
+  </demo>
+</correct>
+
+<resources>
+</resources>
+

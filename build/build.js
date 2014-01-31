@@ -9,12 +9,8 @@ const cheerio = require('cheerio')
     template()(
       templateLocals()))}()
 
-function defaultFilesPath() {
-  return 'demos'}
-
 function filesPath() {
-  return path.resolve(
-    defaultFilesPath())}
+  return path.resolve('demos')}
 
 function filePath(file) {
   return ''+filesPath()+'/'+file}
@@ -23,7 +19,7 @@ function makeFileObject(fileName) {
   return {
     id: fileName.replace(/\.html$/, ''),
     content: fs.readFileSync(
-      filePath(fileName)).toString() }}
+      filePath(fileName)).toString()}}
 
 function files() {
   return fs.readdirSync(
@@ -42,27 +38,37 @@ function template() {
       templatePath()).toString())}
 
 function parseFile(fileObject) {
-  return (function($) {
-    return {
+  return templateFileObject(
+    fileObject.id, cheerio.load(
+      fileObject.content))}
+
+function templateFileObject(id, $) {
+  return {
       name: $('title').html(),
-      id: fileObject.id,
+      id: id,
       introduction: $('introduction').html(),
       textIntroduction: $('introduction').text().trim().replace(/\s+/g, ' '),
-      incorrect: {
-        description: $('incorrect description').html(),
-        demo: $('incorrect demo').html().trim(),
-      },
-      correct: {
-        description: $('correct description').html(),
-        demo: $('correct demo').html().trim(),
-      }, }})(cheerio.load(fileObject.content))}
+      incorrect: getDemos($, 'incorrect'),
+      correct: getDemos($, 'correct')}}
+
+function getDemos($, kind) {
+  return $(kind).find('demo').map(function(i, el) {
+    return {
+      code: cleanWhitespace($(el).find('code').html()),
+      discussion: $(el).find('discussion').html()}}).toArray()}
+
+function cleanWhitespace(html) {
+  return html}
 
 function readCss() {
   return fs.readFileSync(
     path.resolve(__dirname, 'styles.css')).toString()}
 
+function notDraft(fileName) {
+  return !fileName.match(/draft.html$/)}
+
 function templateLocals() {
   return {
-    files: files().sort().map(processFile),
+    files: files().filter(notDraft).sort().map(processFile),
     css: readCss()}}
 

@@ -18,6 +18,8 @@ header {
 
 #toc {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 main {
@@ -40,7 +42,7 @@ pre {
   border: 1px solid #ddd;
   padding: 1em;
   background: #fafaff;
-  white-space: nowrap;
+  white-space: pre-wrap;
   overflow: auto;
 }
 
@@ -50,6 +52,10 @@ body, h1, h2, h3 {
 
 .header-link {
   text-decoration: none;
+}
+
+.introduction {
+  font-size: 20px;
 }
 
 /*.demo {*/
