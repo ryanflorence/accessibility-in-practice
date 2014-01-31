@@ -12,34 +12,40 @@ Install dependencies, you will need [Node.js](http://nodejs.org).
 
 `npm install`
 
-Create a file in `data/` that looks like this:
+Create a file in `demos/` that looks like this and fill it in:
 
 ```html
-<title>Title of your pattern</title>
+<title><!-- TEXT --></title>
 
-<intro>
-  <!-- html to introduce the subject -->
-</intro>
+<introduction><!-- HTML --></introduction>
 
 <incorrect>
   <demo>
-    <!-- code in here will get displayed and rendered -->
+    <code>
+      <!-- HTML - this will be rendered and displayed -->
+    </code>
+    <discussion>
+      <!-- HTML -->
+    </discussion>
   </demo>
-
-  <description>
-    <!-- HTML describing the incorrect demo -->
-  </description>
+  <!-- can have multiple demos -->
 </incorrect>
 
 <correct>
+  <!-- same as incorrect -->
   <demo>
-    <!-- code in here will get displayed and rendered -->
+    <code></code>
+    <discussion></discussion>
   </demo>
+</correct>
 
-  <description>
-    <!-- HTML describing the correct demo -->
-  </description>
-</section>
+<resources>
+  <resource href="http://example.com" title="Title of link">
+    <!-- TEXT: description of link -->
+  </resource>
+  <!-- can have multiple resources -->
+</resources>
+
 ```
 
 Build the page:
@@ -51,5 +57,5 @@ License and Copyright
 
 MIT-Style license
 
-&copy 2014 Ryan Florence
+&copy; 2014 Ryan Florence
 
