@@ -60,6 +60,12 @@ a {
   color: #2267f2;
 }
 
+.code-iframe {
+  border: 0;
+  display: block;
+  height: 40px;
+}
+
 .demo-header {
   margin-bottom: 0;
 }

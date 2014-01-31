@@ -64,8 +64,20 @@ function getDemos($, kind, id) {
   return $(kind).find('demo').map(function(i, el) {
     return {
       id: id+'-'+kind+'-'+(i+1),
-      code: cleanWhitespace($(el).find('code').html()),
+      code: getCode($(el)),
+      height: $(el).find('code').attr('height'),
+      iframeSrc: getIframeSource($(el)),
       discussion: $(el).find('discussion').html()}}).toArray()}
+
+function getCode($el) {
+  return cleanWhitespace($el.find('code').html())}
+
+function getIframeSource($el) {
+  return "data:text/html;charset=utf-8,"+
+          encodeURIComponent(
+            '<style>body{margin:0;font-family:"helvetica neue",helvetica,sans-serif;font-weight:200;}</style>\n'+
+            '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>\n'+
+            getCode($el))}
 
 function getInitialIndent(html, fn) {
   return html.match(/[^\s]/).index}

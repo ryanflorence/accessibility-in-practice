@@ -5,7 +5,6 @@
 <style>
 {{{css}}}
 </style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <header>
   <h1>Accessibility in Practice</h1>
@@ -38,8 +37,13 @@
         {{#each incorrect}}
           <h3 id="{{id}}"><a class="red header-link" href="#{{id}}">Incorrect</a></h3>
           <div class="demo">
-            <div>{{{code}}}</div>
+            <iframe
+              class="code-iframe"
+              src="{{iframeSrc}}"
+              style="height: {{height}}"
+            ></iframe>
             <pre class="code">{{code}}</pre>
+            <small><a href="{{iframeSrc}}">view demo</a></small>
             <h4 class="purple">Discussion</h4>
             <div>{{{discussion}}}</div>
           </div>
@@ -50,8 +54,13 @@
         {{#each correct}}
           <h3 id="{{id}}"><a class="green header-link" href="#{{id}}">Correct</a></h3>
           <div class="demo">
-            <div>{{{code}}}</div>
+            <iframe
+              class="code-iframe"
+              src="{{iframeSrc}}"
+              style="height: {{height}}"
+            ></iframe>
             <pre class="code">{{code}}</pre>
+            <small><a href="{{iframeSrc}}">view demo</a></small>
             <h4 class="purple">Discussion</h4>
             <div>{{{discussion}}}</div>
           </div>

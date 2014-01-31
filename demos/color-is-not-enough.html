@@ -16,19 +16,19 @@
 
 <incorrect>
   <demo>
-    <code>
+    <code height="60px">
       <div><span class="status online"></span> Server A</div>
       <div><span class="status offline"></span> Server B</div>
       <style>
-        #color-is-not-enough .status {
+       .status {
           display: inline-block;
           width: 24px;
           height: 24px;
         }
-        #color-is-not-enough .online  {
+        .online  {
           background-color: rgb(144, 185, 117)
         }
-        #color-is-not-enough .offline {
+        .offline {
           background-color: rgb(233, 151, 105)
         }
       </style>
@@ -54,9 +54,22 @@
 
 <correct>
   <demo>
-    <code>
+    <code height="60px">
       <div><span class="status online"></span> Server A: online</div>
       <div><span class="status offline"></span> Server B: offline</div>
+      <style>
+       .status {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+        }
+        .online  {
+          background-color: rgb(144, 185, 117)
+        }
+        .offline {
+          background-color: rgb(233, 151, 105)
+        }
+      </style>
     </code>
     <discussion>
       <p>
@@ -68,9 +81,9 @@
   </demo>
 
   <demo>
-    <code>
-      <div><span class="status-icon online"></span> Server A <span class="sr-only">online</span></div>
-      <div><span class="status-icon offline"></span> Server B <span class="sr-only">offline</span></div>
+    <code height="60px">
+      <div><span class="status online"></span> Server A <span class="sr-only">online</span></div>
+      <div><span class="status offline"></span> Server B <span class="sr-only">offline</span></div>
       <style>
         .sr-only { 
           position: absolute;
@@ -79,23 +92,29 @@
           overflow: hidden;
           top: 0;
         }
-        #color-is-not-enough .status-icon {
+        .status{
           position: relative;
           display: inline-block;
           width: 24px;
           height: 24px;
         }
-        #color-is-not-enough .status-icon:before {
+        .online  {
+          background-color: rgb(144, 185, 117)
+        }
+        .offline {
+          background-color: rgb(233, 151, 105)
+        }
+        .status:before {
           position: absolute;
           left: 4px;
           color: #fff;
           opacity: 0.75;
           font-size: 16px;
         }
-        #color-is-not-enough .status-icon.online:before {
+        .status.online:before {
           content: '☀︎';
         }
-        #color-is-not-enough .status-icon.offline:before {
+        .status.offline:before {
           content: '☁︎'
         }
       </style>

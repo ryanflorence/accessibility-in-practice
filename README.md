@@ -48,6 +48,9 @@ Create a file in `demos/` that looks like this and fill it in:
 
 ```
 
+Your code samples will be rendered inside an iframe, giving you a fresh
+scope for css and javascript.
+
 Build the page:
 
 `npm run-script build`
