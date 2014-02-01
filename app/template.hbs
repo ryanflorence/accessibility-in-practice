@@ -40,7 +40,7 @@
         <ul>
         {{#each resources}}
           <li>
-            <a href="{{href}}">{{title}}</a> - {{description}}
+            <a href="{{href}}">{{title}}</a>{{#if description}} - {{description}}{{/if}}
           </li>
         {{/each}}
         </ul>
@@ -65,7 +65,7 @@
               <iframe
                 class="code-iframe"
                 src="{{iframeSrc}}"
-                style="height: {{height}}"
+                style="height: {{height}}; width: 100%"
               ></iframe>
               <small><a href="{{iframeSrc}}">view demo</a></small>
               <h4 class="black">Discussion</h4>
@@ -91,7 +91,7 @@
               <iframe
                 class="code-iframe"
                 src="{{iframeSrc}}"
-                style="height: {{height}}"
+                style="height: {{height}}; width: 100%"
               ></iframe>
               <small><a href="{{iframeSrc}}">view demo</a></small>
               <h4 class="black">Discussion</h4>

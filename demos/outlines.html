@@ -1,0 +1,73 @@
+<title>Outlines</title>
+
+<introduction>
+  <p>
+    Designers hate the default "outline" styles on focused elements so
+    we often turn them off completely. This is problematic for
+    keyboard users.
+  </p>
+</introduction>
+
+<resources>
+  <resource
+    href="http://webaim.org/blog/plague-of-outline-0/"
+    title="The Plague of Outline: 0"
+  ></resource>
+  <resource
+    href="http://a11yproject.com/posts/never-remove-css-outlines/"
+    title="Quick Tip: Never remove CSS outlines"
+  ></resource>
+</resources>
+
+<incorrect>
+  <demo>
+    <code>
+      <button class="fancy">edit</button>
+      <button class="fancy">delete</button>
+      <style>
+        .fancy {
+          outline: none;
+          border: 1px solid #888;
+          background: #eee;
+        }
+      </style>
+    </code>
+    <discussion>
+      <p>
+        If you try to tab to these buttons you have no idea where you
+        are at in the document.
+      </p>
+    </discussion>
+  </demo>
+</incorrect>
+
+<correct>
+  <demo>
+    <code>
+      <button class="fancy">edit</button>
+      <button class="fancy">delete</button>
+      <style>
+        .fancy {
+          outline: none;
+          border: 1px solid #888;
+          background: #eee;
+        }
+        .fancy:focus {
+          background: #444;
+          border-color: #000;
+          color: #fff;
+        }
+      </style>
+    </code>
+    <discussion>
+      <p>
+        Its okay to do <code>outline: none</code> as long as you provide
+        a clear indication of focus with additional css. The default
+        focus styles can certainly bum out the design of an application.
+        Just make sure you keep the styles obvious and consistent.
+      </p>
+    </discussion>
+  </demo>
+</correct>
+
+

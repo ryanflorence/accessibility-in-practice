@@ -58,7 +58,7 @@ function getResources($) {
       return {
         href: el.attr('href'),
         title: el.attr('title'),
-        description: el.html() }})($(resource))}).toArray()}
+        description: el.html().trim() }})($(resource))}).toArray()}
 
 function getDemos($, kind, id) {
   return $(kind).find('demo').map(function(i, el) {
@@ -99,7 +99,7 @@ function readCss() {
     path.resolve(__dirname, 'styles.css')).toString()}
 
 function notDraft(fileName) {
-  return !fileName.match(/draft.html$/)}
+  return !fileName.match(/^draft\./)}
 
 function templateLocals() {
   return {

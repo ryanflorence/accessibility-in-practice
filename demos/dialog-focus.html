@@ -1,0 +1,151 @@
+<title>Manage Focus When Opening Dialogs</title>
+
+<introduction>
+  <p>
+    If you can't see a dialog was opened over the top of the page, you
+    don't know its there. Additionaly, most dialogs get added to the
+    bottom of the document, making them even more inaccessible to
+    screen reader and keyboard users.
+  </p>
+</introduction>
+
+<incorrect>
+  <demo>
+    <code height="250px;">
+      <button id="open-dialog">open dialog</button>
+      <script>
+        $('#open-dialog').on('click', openDialog);
+
+        function openDialog() {
+          var el = createDialog();
+          attachCloseHandler(el);
+          el.appendTo(document.body);
+        }
+
+        function attachCloseHandler(el) {
+          el.on('click', '.close', function() {
+            el.remove();
+          });
+        }
+
+        function createDialog() {
+          var dialog = $('<div/>');
+          dialog.addClass('dialog');
+          dialog.html('<button class="close">close</button><p>Dialog Content</p>');
+          return dialog;
+        }
+      </script>
+      <style>
+        .dialog {
+          background: #fff;
+          width: 85%;
+          height: 150px;
+          border: 1px solid #ccc;
+          padding: 20px;
+          box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+          position: fixed;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: 5px;
+        }
+      </style>
+    </code>
+    <discussion>
+      <p>
+        When a screen reader user clicks "open dialog", its as though
+        nothing happens. If they are a developer they might know to drop
+        down to the bottom of the document to search for a new element,
+        but thats not very likely.
+      </p>
+    </discussion>
+  </demo>
+</incorrect>
+
+<correct>
+  <demo>
+    <code height="250px;">
+      <button id="open-dialog">open dialog</button>
+      <script>
+        $('#open-dialog').on('click', openDialog);
+
+        function openDialog() {
+          var el = createDialog();
+          attachCloseHandler(el);
+          el.appendTo(document.body);
+          focusEl(el); // <-- focus the element
+        }
+
+        function focusEl(el) {
+          el.attr('tabindex', -1);
+          el.focus();
+        }
+
+        function attachCloseHandler(el) {
+          el.on('click', '.close', function() {
+            el.remove();
+          });
+        }
+
+        function createDialog() {
+          var dialog = $('<div/>');
+          dialog.addClass('dialog');
+          dialog.html('<button class="close">close</button><p>Dialog Content</p>');
+          return dialog;
+        }
+      </script>
+      <style>
+        .dialog {
+          background: #fff;
+          width: 85%;
+          height: 150px;
+          border: 1px solid #ccc;
+          padding: 20px;
+          box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+          position: fixed;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: 5px;
+        }
+      </style>
+    </code>
+    </code>
+    <discussion>
+      <p>
+        Now when the user clicks the button the focus is changed for
+        them to the dialog in <code>focusEl</code>. A
+        <code>tabindex</code> of -1 makes an element able to be focused
+        but keeps it from being tabbable.
+      </p>
+      <p>
+        Please note this is a minimalistic dialog to demonstrate focus,
+        its not a complete solution for dialogs.
+      </p>
+    </discussion>
+  </demo>
+</correct>
+
+<resources>
+  <resource
+    href="http://www.w3.org/TR/wai-aria/usage#managingfocus"
+    title="WAI-ARIA Usage - Managing Focus"
+  >
+    Discusses how your application should always have a focused element,
+    including which kinds of components you need to personally manage.
+  </resource>
+  <resource
+    href="http://www.w3.org/TR/2010/WD-wai-aria-practices-20100916/#focus_tabindex"
+    title="Using Tabindex to Manage Focus among Widgets"
+  ></resource>
+  <resource
+    href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_dialog_role"
+    title="Using the dialog role - Accessibility | MDN"
+  ></resource>
+  <resource
+    href="http://www.w3.org/TR/wai-aria/roles#dialog"
+    title="WAI-ARIA Dialog Role"
+  ></resource>
+</resources>
+
+
