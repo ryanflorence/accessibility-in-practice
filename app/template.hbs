@@ -33,38 +33,59 @@
       <h2 class="demo-header"><a class="blue header-link" href="#{{id}}">{{name}}</a></h2>
       <div class="introduction">{{{introduction}}}</div>
 
-      <div class="demos incorrect-demos">
-        {{#each incorrect}}
-          <h3 id="{{id}}"><a class="red header-link" href="#{{id}}">Incorrect</a></h3>
-          <div class="demo">
-            <iframe
-              class="code-iframe"
-              src="{{iframeSrc}}"
-              style="height: {{height}}"
-            ></iframe>
-            <pre class="code">{{code}}</pre>
-            <small><a href="{{iframeSrc}}">view demo</a></small>
-            <h4 class="purple">Discussion</h4>
-            <div>{{{discussion}}}</div>
-          </div>
-        {{/each}}
-      </div>
+      <div class="Grid Grid--gutters Grid--full large-Grid--fit">
+        <div class="demos incorrect-demos Grid-cell">
+          {{#each incorrect}}
+            <h3 id="{{id}}">
+              <a class="red header-link" href="#{{id}}">
+                <svg class="incorrect" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                <path id="error-5-icon" d="M341.328,50H170.672L50,170.672v170.656L170.672,462h170.656L462,341.328V170.672L341.328,50z
+                   M324.276,361.408l-67.275-67.271l-67.273,67.28l-36.136-36.155l67.261-67.271l-67.269-67.265l36.156-36.135l67.257,67.249
+                  l67.246-67.257l36.166,36.141l-67.258,67.263l67.266,67.257L324.276,361.408z"/>
+                </svg>
+                Incorrect
+              </a>
+            </h3>
+            <div class="demo">
+              <pre class="code">{{code}}</pre>
+              <iframe
+                class="code-iframe"
+                src="{{iframeSrc}}"
+                style="height: {{height}}"
+              ></iframe>
+              <small><a href="{{iframeSrc}}">view demo</a></small>
+              <h4 class="purple">Discussion</h4>
+              <div>{{{discussion}}}</div>
+            </div>
+          {{/each}}
+        </div>
 
-      <div class="demos correct-demos">
-        {{#each correct}}
-          <h3 id="{{id}}"><a class="green header-link" href="#{{id}}">Correct</a></h3>
-          <div class="demo">
-            <iframe
-              class="code-iframe"
-              src="{{iframeSrc}}"
-              style="height: {{height}}"
-            ></iframe>
-            <pre class="code">{{code}}</pre>
-            <small><a href="{{iframeSrc}}">view demo</a></small>
-            <h4 class="purple">Discussion</h4>
-            <div>{{{discussion}}}</div>
-          </div>
-        {{/each}}
+        <div class="demos correct-demos Grid-cell">
+          {{#each correct}}
+            <h3 id="{{id}}">
+              <a class="green header-link" href="#{{id}}">
+                <svg class="correct" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                <path id="check-mark-3-icon" d="M256,50C142.229,50,50,142.229,50,256s92.229,206,206,206s206-92.229,206-206S369.771,50,256,50z
+                   M220.953,366.959l-97.326-97.352l41.44-41.448l55.884,55.899l129.018-129.018l41.459,41.431L220.953,366.959z"/>
+                </svg>
+                Correct
+              </a>
+            </h3>
+            <div class="demo">
+              <pre class="code">{{code}}</pre>
+              <iframe
+                class="code-iframe"
+                src="{{iframeSrc}}"
+                style="height: {{height}}"
+              ></iframe>
+              <small><a href="{{iframeSrc}}">view demo</a></small>
+              <h4 class="purple">Discussion</h4>
+              <div>{{{discussion}}}</div>
+            </div>
+          {{/each}}
+        </div>
       </div>
 
       {{#if resources}}
