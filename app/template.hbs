@@ -33,6 +33,19 @@
       <h2 class="demo-header"><a class="blue header-link" href="#{{id}}">{{name}}</a></h2>
       <div class="introduction">{{{introduction}}}</div>
 
+      {{#if resources}}
+        <h3 id="{{id}}-resources">
+          <a href="#{{id}}-resources" class="header-link orange">Additional Resources</a>
+        </h3>
+        <ul>
+        {{#each resources}}
+          <li>
+            <a href="{{href}}">{{title}}</a> - {{description}}
+          </li>
+        {{/each}}
+        </ul>
+      {{/if}}
+
       <div class="Grid Grid--gutters Grid--full large-Grid--fit">
         <div class="demos incorrect-demos Grid-cell">
           {{#each incorrect}}
@@ -87,19 +100,6 @@
           {{/each}}
         </div>
       </div>
-
-      {{#if resources}}
-        <h3 id="{{id}}-resources">
-          <a href="#{{id}}-resources" class="header-link orange">Additional Resources</a>
-        </h3>
-        <ul>
-        {{#each resources}}
-          <li>
-            <a href="{{href}}">{{title}}</a> - {{description}}
-          </li>
-        {{/each}}
-        </ul>
-      {{/if}}
 
     </article>
   {{/each}}
