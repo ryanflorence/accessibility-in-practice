@@ -4,10 +4,11 @@
 .orange    { color: #f28705 }
 .red       { color: #f24738 }
 .purple    { color: #8839c7 }
+.black     { color: #000000 }
 
 body {
   font-family: "Helvetica Neue", sans-serif;
-  font-color: #444;
+  color: #444;
   line-height: 1.5;
   margin: 0;
 }
@@ -24,11 +25,14 @@ main {
 }
 
 article {
+  position: relative; /* for improve this link */
   padding: 20px;
 }
 
-article:last-child {
-  border-bottom: none;
+.improve-this {
+  position: absolute;
+  top: 83px;
+  right: 20px;
 }
 
 pre {

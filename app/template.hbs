@@ -31,8 +31,8 @@
   {{#each files}}
     <article id="{{id}}">
       <h2 class="demo-header"><a class="blue header-link" href="#{{id}}">{{name}}</a></h2>
-      <div class="introduction">{{{introduction}}}</div>
-
+      <a class="improve-this" href="https://github.com/rpflorence/accessibility-in-practice/edit/master/demos/{{id}}.html">Improve this</a>
+      <div class="introduction black">{{{introduction}}}</div>
       {{#if resources}}
         <h3 id="{{id}}-resources">
           <a href="#{{id}}-resources" class="header-link orange">Additional Resources</a>
@@ -68,7 +68,7 @@
                 style="height: {{height}}"
               ></iframe>
               <small><a href="{{iframeSrc}}">view demo</a></small>
-              <h4 class="purple">Discussion</h4>
+              <h4 class="black">Discussion</h4>
               <div>{{{discussion}}}</div>
             </div>
           {{/each}}
@@ -94,7 +94,7 @@
                 style="height: {{height}}"
               ></iframe>
               <small><a href="{{iframeSrc}}">view demo</a></small>
-              <h4 class="purple">Discussion</h4>
+              <h4 class="black">Discussion</h4>
               <div>{{{discussion}}}</div>
             </div>
           {{/each}}
